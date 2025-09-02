@@ -1,0 +1,17 @@
+cookie:
+  expiry_days: 30
+  key: mip
+  name: mip
+credentials:
+  usernames:
+    mip:
+      email: mip@gmail.com
+      failed_login_attempts: 0 # Will be managed automatically
+      first_name: mip
+      last_name: mip
+      logged_in: False # Will be managed automatically
+      password: m@ 
+      roles: 
+      - admin
+      - editor
+      - viewer

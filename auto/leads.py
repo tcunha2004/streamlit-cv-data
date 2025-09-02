@@ -1,6 +1,7 @@
 # bibliotecas
 import requests
 import pandas as pd
+import streamlit as st
 
 def get_leads():
     print("Iniciando get_leads...")
@@ -9,7 +10,7 @@ def get_leads():
     headers = {
         "accept": "application/json",
         "email": "thiago.cunha@mip.com.br",
-        "token": "72d919236350de7e54850a0cfa83096b573b0016"
+        "token": st.secrets["token"]
     }
 
     # URL da API de leads
