@@ -1,0 +1,14 @@
+# Arquivos de ambiente virtual
+venv/
+.env
+
+# Arquivos temporários
+*.pyc
+__pycache__/
+*.log
+
+# Configurações locais
+.vscode/
+.idea/
+
+config.yaml
