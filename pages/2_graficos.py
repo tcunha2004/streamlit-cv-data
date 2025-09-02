@@ -18,14 +18,13 @@ date_range = col2.date_input( # cria o filtro e pega o range
 )
 start, end = date_range # pega o range
 
-df_filtrado = df_leads[(df_leads["ultima_data_conversao"] >= start) & (df_leads["ultima_data_conversao"] <= end)]
+df_filtrado = df_leads[(df_leads["ultima_data_conversao"].dt.date >= start) & (df_leads["ultima_data_conversao"].dt.date <= end)]
 
 # agrupa e conta
 dados = (
     df_filtrado.groupby("situacao")
     .size()
     .reset_index(name="Leads")
-    # .sort_values("Leads", ascending=False)
 )
 st.area_chart(data=dados, x="situacao", y="Leads",
               x_label="Situação", y_label="Leads", height=700)
