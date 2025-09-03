@@ -1,8 +1,5 @@
 import datetime
 import streamlit as st
-import locale
-
-locale.setlocale(locale.LC_TIME, "pt_BR.UTF-8")
 
 st.set_page_config(layout="wide", page_title="Mip - Grafico Andamento Leads")
 
@@ -34,7 +31,7 @@ dados_ = (
     df_filtrado_
     .assign(
         mes=lambda d: d["ultima_data_conversao"].dt.to_period("M").dt.to_timestamp(),
-        mes_label=lambda d: d["ultima_data_conversao"].dt.strftime("%b/%Y")  # usa locale pt_BR
+        mes_label=lambda d: d["ultima_data_conversao"].dt.strftime("%Y-%m-%d")  
     )
     .groupby("mes", as_index=False)
     .size()
