@@ -1,7 +1,6 @@
 import datetime
 import streamlit as st
 import locale
-import calendar
 
 locale.setlocale(locale.LC_TIME, "pt_BR.UTF-8")
 

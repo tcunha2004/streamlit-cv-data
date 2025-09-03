@@ -3,3 +3,4 @@ pandas
 requests
 streamlit_authenticator
 PyYAML
+locale
