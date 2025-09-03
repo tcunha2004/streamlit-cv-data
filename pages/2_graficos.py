@@ -1,4 +1,5 @@
 import datetime
+import pandas as pd
 import streamlit as st
 
 st.set_page_config(layout="wide", page_title="Mip - Grafico Andamento Leads")
@@ -22,8 +23,8 @@ start_, end_ = date_range_
 
 # filtra pelo range
 df_filtrado_ = df_leads[
-    (df_leads["ultima_data_conversao"].dt.date >= start_) &
-    (df_leads["ultima_data_conversao"].dt.date <= end_)
+    (pd.to_datetime(df_leads["ultima_data_conversao"]).dt.date >= start_) &
+    (pd.to_datetime(df_leads["ultima_data_conversao"]).dt.date <= end_)
 ]
 
 # cria coluna mês (primeiro dia do mês) e etiqueta amigável
