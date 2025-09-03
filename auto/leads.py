@@ -61,8 +61,8 @@ def get_leads():
     df["corretor"] = df["corretor"].map(lambda x: x["nome"] if x["nome"] else None)
     df["situacao"] = df["situacao"].map(lambda x: x["nome"] if x["nome"] else None)
     df["telefone"] = df["telefone"].map(lambda x: str(x).replace(".0", "") if pd.notnull(x) else None)
-    df["data_cad"] = pd.to_datetime(df["data_cad"], errors="coerce")
-    df["ultima_data_conversao"] = pd.to_datetime(df["ultima_data_conversao"], errors="coerce")
+    df["data_cad"] = pd.to_datetime(df["data_cad"], errors="coerce").dt.date
+    df["ultima_data_conversao"] = pd.to_datetime(df["ultima_data_conversao"], errors="coerce").dt.date
     df["empreendimento"]= df["empreendimento"].map(lambda x: [item["nome"] for item in x] if isinstance(x, list) else None)
 
     return df

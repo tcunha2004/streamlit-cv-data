@@ -1,12 +1,14 @@
 import datetime
 from numpy import average
 import streamlit as st
+import pandas as pd
 
 st.set_page_config(layout="wide", page_title="Mip - Métricas")
 
 def dados_metrica_leads_mes():
     df_leads = st.session_state["df_leads"]
     df_reservas = st.session_state["df_reservas"]
+    df_leads["ultima_data_conversao"] = pd.to_datetime(df_leads["ultima_data_conversao"]).dt.date
     # -----------------------------------------------------------------------------------
     # Media de Leads por mes
     ano = datetime.date.today().year
@@ -15,8 +17,8 @@ def dados_metrica_leads_mes():
 
     for m in range(1, mes+1):
         df_filtrado_mes = df_leads[
-        (df_leads["ultima_data_conversao"].dt.month == m) &
-        (df_leads["ultima_data_conversao"].dt.year  == ano)
+        (pd.to_datetime(df_leads["ultima_data_conversao"]).dt.month == m) &
+        (pd.to_datetime(df_leads["ultima_data_conversao"]).dt.year  == ano)
         ]
         leads_meses.append(len(df_filtrado_mes))
 
@@ -26,8 +28,8 @@ def dados_metrica_leads_mes():
     hoje = datetime.date.today()
 
     df_filtrado_desse_mes = df_leads[
-        (df_leads["ultima_data_conversao"].dt.month == hoje.month) &
-        (df_leads["ultima_data_conversao"].dt.year  == hoje.year)
+        (pd.to_datetime(df_leads["ultima_data_conversao"]).dt.month == hoje.month) &
+        (pd.to_datetime(df_leads["ultima_data_conversao"]).dt.year  == hoje.year)
     ]
 
     total_leads_desse_mes = len(df_filtrado_desse_mes) # !
