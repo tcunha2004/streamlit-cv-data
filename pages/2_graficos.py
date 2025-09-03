@@ -65,7 +65,7 @@ date_range = col2.date_input( # cria o filtro e pega o range
 )
 start, end = date_range # pega o range
 
-df_filtrado = df_leads[(df_leads["ultima_data_conversao"].dt.date >= start) & (df_leads["ultima_data_conversao"].dt.date <= end)]
+df_filtrado = df_leads[(pd.to_datetime(df_leads["ultima_data_conversao"]).dt.date >= start) & (pd.to_datetime(df_leads["ultima_data_conversao"]).dt.date <= end)]
 
 # agrupa e conta
 dados = (
